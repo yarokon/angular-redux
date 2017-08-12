@@ -1,0 +1,11 @@
+.completed { 
+  text-decoration: line-through;
+}
+
+ul {
+  user-select: none;
+}
+
+li {
+  cursor: pointer;
+}

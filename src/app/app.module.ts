@@ -1,16 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
+import { NgReduxModule, NgRedux, DevToolsExtension } from '@angular-redux/store';
 
 import { AppComponent } from './app.component';
+import { rootReducer, IAppState, INITIAL_STATE } from './store';
+
+import { TodosModule } from './tasking/todos.module';
+import { MessagingModule } from './messaging/messaging.module';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    NgReduxModule,
+    TodosModule,
+    MessagingModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(ngRedux: NgRedux<IAppState>,
+              devTools: DevToolsExtension) {
+    const enhancers = isDevMode() ? [devTools.enhancer()] : [];
+    ngRedux.configureStore(rootReducer, INITIAL_STATE, [], enhancers);
+  }
+}
