@@ -12,7 +12,7 @@ import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO } from '../actions';
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent {
-  @select((s: IAppState) => s.tasking.todos) readonly todos$: Observable<ToDo[]>;
+  @select(['tasking', 'todos']) readonly todos$: Observable<ToDo[]>;
 
   constructor(private ngRedux: NgRedux<IAppState>) { }
 

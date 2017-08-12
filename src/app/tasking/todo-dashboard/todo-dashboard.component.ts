@@ -12,8 +12,8 @@ import { CLEAR_TODOS } from '../actions';
   styleUrls: ['./todo-dashboard.component.css']
 })
 export class TodoDashboardComponent {
-  @select((s: IAppState) => s.tasking.todos) readonly todos$: Observable<ToDo[]>;
-  @select((s: IAppState) => s.tasking.lastUpdate) readonly lastUpdate$: Observable<Date>;
+  @select(['tasking', 'todos']) readonly todos$: Observable<ToDo[]>;
+  @select(['tasking', 'lastUpdate']) readonly lastUpdate$: Observable<Date>;
 
   constructor(private ngRedux: NgRedux<IAppState>) { }
 
