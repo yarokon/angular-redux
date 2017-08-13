@@ -31,13 +31,11 @@ export class TodoListComponent {
     this.addTodo(input);
   }
 
-  toggleTodo(todo) {
-    const id = todo.id;
+  toggleTodo(id) {
     this.ngRedux.dispatch({ type: TOGGLE_TODO, id });
   }
 
-  removeTodo(todo) {
-    const id = todo.id;
+  removeTodo(id) {
     this.ngRedux.dispatch({ type: REMOVE_TODO, id });
   }
 }

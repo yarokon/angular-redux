@@ -1,5 +1,5 @@
-import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO, CLEAR_TODOS } from './actions';
 import { combineReducers } from 'redux';
+import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO, CLEAR_TODOS } from './actions';
 
 export interface ToDo {
   id: number;
@@ -37,13 +37,13 @@ class ToDoActions {
   }
 
   toggleToDo(): ToDo {
-    if (this.state.id !== this.action.id) {
-      return this.state;
-    } else {
+    if (this.state.id === this.action.id) {
       return {
         ...this.state,
         isCompleted: !this.state.isCompleted
       };
+    } else {
+      return this.state;
     }
   }
 }

@@ -15,7 +15,7 @@ class MessagingActions {
   }
 }
 
-export const messaging = (state: IMessagingState = 0, action): number => {
+export const messaging = (state: IMessagingState = 0, action): IMessagingState => {
   const actions = new MessagingActions(state, action);
 
   switch (action.type) {
