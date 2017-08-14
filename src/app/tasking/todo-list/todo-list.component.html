@@ -9,6 +9,12 @@
       (click)="toggleTodo(todo.id)"
       [class.completed]="todo.isCompleted"
     >{{ todo.title }}</span> 
-    <button (click)="removeTodo(todo.id)">Remove</button>
+    <img
+      [src]="delete"
+      alt="delete"
+      (click)="removeTodo(todo.id)"
+    >
   </li>
 </ul>
+
+

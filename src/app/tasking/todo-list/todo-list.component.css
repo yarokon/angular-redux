@@ -8,4 +8,20 @@ ul {
 
 li {
   cursor: pointer;
+  line-height: 0.8em;
+}
+
+li span {
+  font-size: 1.2em;
+}
+
+li:hover img{
+  visibility: visible;
+}
+
+img {
+  visibility: hidden;
+  position: relative;
+  top: 6px;
+  left: 3px;
 }

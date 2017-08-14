@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO, CLEAR_TODOS } from './actions';
+import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO, CLEAR_TODOS, FETCH_TODOS_SUCCESS } from './actions';
 
 export interface ToDo {
   id: number;
@@ -82,6 +82,10 @@ class ToDosActions {
   clearToDos(): ToDo[] {
     return [];
   }
+
+  fetchToDosSuccess(): ToDo[] {
+    return this.action.data;
+  }
 }
 
 const todos = (state: ToDo[] = [], action): ToDo[] => {
@@ -96,6 +100,8 @@ const todos = (state: ToDo[] = [], action): ToDo[] => {
       return  actions.removeToDo();
     case CLEAR_TODOS:
       return  actions.clearToDos();
+    case FETCH_TODOS_SUCCESS:
+      return actions.fetchToDosSuccess();
     default:
       return state;
   }

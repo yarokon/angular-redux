@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { IAppState } from '../../store';
 import { ToDo } from '../store';
 import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO } from '../actions';
+import { TodoService } from '../server/todo.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -14,7 +15,10 @@ import { ADD_TODO, TOGGLE_TODO, REMOVE_TODO } from '../actions';
 export class TodoListComponent {
   @select(['tasking', 'todos']) readonly todos$: Observable<ToDo[]>;
 
-  constructor(private ngRedux: NgRedux<IAppState>) { }
+  constructor(private ngRedux: NgRedux<IAppState>,
+              private todoService: TodoService) { }
+
+  delete = './assets/delete.svg';
 
   addTodo(input) {
     const title: string = input.value.trim();
